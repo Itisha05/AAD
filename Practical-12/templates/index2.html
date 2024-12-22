@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Input Distance Matrix</title> 
+</head> 
+<body> 
+<h1>Enter Distances Between Cities</h1> 
+<form action="" method="post"> 
+<table> 
+{% for i in range(size) %} 
+<tr> 
+{% for j in range(size) %} 
+<td> 
+<input type="text" name="cell_{{ i }}_{{ j }}" 
+placeholder="{{ 'inf' if i == j else '0' }}" 
+value="{{ 'inf' if i == j else '' }}" required> 
+</td> 
+{% endfor %} 
+</tr> 
+{% endfor %} 
+</table> 
+<button type="submit">Calculate</button> 
+</form> 
+</body> 
+</html>

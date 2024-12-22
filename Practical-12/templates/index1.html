@@ -1,0 +1,24 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>TSP Solution</title> 
+<style> 
+body { font-family: Arial, sans-serif; margin: 20px; } 
+h1 { color: #333; } 
+ul { list-style-type: none; padding: 0; } 
+li { margin-bottom: 8px; } 
+</style> 
+</head> 
+<body> 
+<h1>Travelling Salesman Problem Solution</h1> 
+<p><b>Minimum Cost:</b> {{ min_cost }}</p> 
+<p><b>Path Taken:</b> {{ path_taken }}</p> 
+<ul> 
+{% for frm, to, cost in min_cost_details %} 
+<li>{{ frm }}- {{ to }} = {{ cost }}</li> 
+{% endfor %} 
+</ul> 
+</body> 
+</html>

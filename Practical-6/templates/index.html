@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Chain Multiplication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .matrix-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Matrix Chain Multiplication</h1>
+    <form method="POST">
+        <label for="dimensions">Enter matrix dimensions (comma-separated):</label>
+        <input type="text" id="dimensions" name="dimensions" required>
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if min_operations is not none %}
+        <h2>Results</h2>
+        {% if num_matrices is not none %}
+            <p class="matrix-label">Number of matrices: {{ num_matrices }}</p>
+        {% endif %}
+        <p>Minimum number of multiplications: {{ min_operations }}</p>
+        <p>Optimal parenthesization: {{ parenthesization }}</p>
+
+        {% if m is not none %}
+            <h3>Matrix M</h3>
+            <table>
+                <tr>
+                    <th></th>
+                    {% for i in range(num_matrices) %}
+                        <th>Matrix {{ i + 1 }}</th>
+                    {% endfor %}
+                </tr>
+                {% for i in range(num_matrices) %}
+                    <tr>
+                        <th>Matrix {{ i + 1 }}</th>
+                        {% for j in range(num_matrices) %}
+                            <td>{{ m[i][j] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

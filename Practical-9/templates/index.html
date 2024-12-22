@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Fractional Knapsack Problem Solver</title> 
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            text-align: center; 
+        } 
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background-color: #f2f2f2; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        } 
+        input, button { 
+            margin: 10px 0; 
+            padding: 10px; 
+            width: 80%; 
+        } 
+        .result { 
+            margin-top: 20px; 
+            text-align: left; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <div class="container"> 
+        <h2>Fractional Knapsack Problem Solver</h2> 
+        <form method="POST"> 
+            <label for="profits">Enter Profits (comma separated):</label><br> 
+            <input type="text" id="profits" name="profits" placeholder="e.g., 280,100,120,120" required><br> 
+ 
+            <label for="weights">Enter Weights (comma separated):</label><br> 
+            <input type="text" id="weights" name="weights" placeholder="e.g., 40,10,20,24" required><br> 
+ 
+            <label for="maxWeight">Maximum Weight the Knapsack can carry:</label><br> 
+            <input type="number" id="maxWeight" name="maxWeight" placeholder="e.g., 60" required><br> 
+ 
+            <button type="submit">Calculate</button> 
+        </form> 
+ 
+        {% if items %} 
+        <div class="result"> 
+            <h3>Results</h3> 
+            <p><strong>Profit:</strong> [{{ items|map(attribute=2)|join(', ') }}]</p> 
+            <p><strong>Weight:</strong> [{{ items|map(attribute=1)|join(', ') }}]</p> 
+            <p><strong>Ratio:</strong> [{{ items|map(attribute=0)|join(', ') }}]</p> 
+            <p><strong>Fractions Taken:</strong> [{{ fractions|join(', ') }}]</p> 
+            <p><strong>Total Profit:</strong> {{ total_profit }}</p> 
+        </div> 
+        {% endif %} 
+    </div> 
+</body> 
+</html>

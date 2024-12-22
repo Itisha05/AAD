@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Comparison</title>
+</head>
+<body>
+    <h2>Comparison of Sorting Algorithms</h2>
+    <div>{{ plot|safe }}</div>  <!-- Render the Plotly plot -->
+
+    <h3>Sorting Times for Different Input Sizes</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Number of Elements</th>
+                <th>Selection Sort Time (s)</th>
+                <th>Insertion Sort Time (s)</th>
+                <th>Bubble Sort Time (s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(sizes|length) %}
+            <tr>
+                <td>{{ sizes[i] }}</td>
+                <td>{{ selection_times[i] }}</td>
+                <td>{{ insertion_times[i] }}</td>
+                <td>{{ bubble_times[i] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

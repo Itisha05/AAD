@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Algorithms Comparison</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .result-table {
+            margin-top: 20px;
+        }
+        .graph-container {
+            margin-top: 20px;
+        }
+        .graph-container img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Search Algorithms Comparison</h1>
+
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="key">Search Key:</label>
+                <select class="form-control" id="key" name="key" required>
+                    <option value="id">ID</option>
+                    <option value="name">Name</option>
+                    <option value="salary">Salary</option>
+                    <option value="age">Age</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="designation">Designation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="value">Search Value:</label>
+                <input type="text" class="form-control" id="value" name="value" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        {% if linear_result or binary_result %}
+        <div class="result-table">
+            <h4 class="text-center">Search Results</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Linear Search Result</th>
+                        <th>Binary Search Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>{{ linear_result.id if linear_result else 'Not Found' }}</td>
+                        <td>{{ binary_result.id if binary_result else 'Not Found' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ linear_result.name if linear_result else 'Not Found' }}</td>
+                        <td>{{ binary_result.name if binary_result else 'Not Found' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Salary</td>
+                        <td>{{ linear_result.salary if linear_result else 'Not Found' }}</td>
+                        <td>{{ binary_result.salary if binary_result else 'Not Found' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Age</td>
+                        <td>{{ linear_result.age if linear_result else 'Not Found' }}</td>
+                        <td>{{ binary_result.age if binary_result else 'Not Found' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile</td>
+                        <td>{{ linear_result.mobile if linear_result else 'Not Found' }}</td>
+                        <td>{{ binary_result.mobile if binary_result else 'Not Found' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Designation</td>
+                        <td>{{ linear_result.designation if linear_result else 'Not Found' }}</td>
+                        <td>{{ binary_result.designation if binary_result else 'Not Found' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="graph-container">
+            <h4 class="text-center">Graphs</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Linear Search</h5>
+                    <img src="data:image/png;base64,{{ linear_graph_url }}" alt="Linear Search Time Complexity">
+                </div>
+                <div class="col-md-6">
+                    <h5>Binary Search</h5>
+                    <img src="data:image/png;base64,{{ binary_graph_url }}" alt="Binary Search Time Complexity">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
